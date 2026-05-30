@@ -34,9 +34,15 @@ def list_tasks():
     if not tasks:
         print("Список задач пуст.")
         return
+    print("+----+----------------------------+------+")
+    print("| №  | Задача                     | Готов|")
+    print("+----+----------------------------+------+")
     for i, task in enumerate(tasks, start=1):
         status = "✓" if task["done"] else "✗"
-        print(f"{i}. {task['title']} [{status}]")
+        # Обрезаем длинные названия до 26 символов
+        title = task["title"][:26] + "..." if len(task["title"]) > 26 else task["title"]
+        print(f"| {i:2} | {title:26} | {status:^4} |")
+    print("+----+----------------------------+------+")
 
 def complete_task(index):
     tasks = load_tasks()
