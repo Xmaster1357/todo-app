@@ -34,9 +34,9 @@ def list_tasks():
     if not tasks:
         print("Список задач пуст.")
         return
-    print("+----+----------------------------+------+")
-    for task in tasks:
-        print(f"| {task['title'][:26]:26} | {task['done']!s:4} |")
+    for i, task in enumerate(tasks, start=1):
+        status = "✓" if task["done"] else "✗"
+        print(f"{i}. {task['title']} [{status}]")
 
 def complete_task(index):
     tasks = load_tasks()
