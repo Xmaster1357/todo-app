@@ -14,8 +14,9 @@ def save_tasks(tasks):
         json.dump(tasks, f, indent=2)
 
 def add_task(title):
+    # Проверка на пустую строку
     if not title.strip():
-        print("Ошибка: пустая задача")
+        print("Ошибка: название задачи не может быть пустым")
         return
     tasks = load_tasks()
     tasks.append({"title": title, "done": False})
